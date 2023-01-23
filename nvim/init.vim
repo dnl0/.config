@@ -11,7 +11,9 @@ call plug#begin()
 	Plug 'Yohannfra/Vim-Goto-Header'	" Header file opener
 	Plug 'cpiger/NeoDebug'	   	    	" GDB
 	Plug 'ledesmablt/vim-run'  	    	" Run shell commands
-	Plug 'ludovicchabant/vim-gutentags'	" Ctags manager
+"	Plug 'ludovicchabant/vim-gutentags'	" Ctags manager
+"   Plug 'neovim/nvim-lspconfig'        " Lsp manager
+"   Plug 'ycm-core/YouCompleteMe'       " YouCompleteMe
 	Plug 'preservim/nerdtree'  		    " File manager
 call plug#end()
 
@@ -68,19 +70,75 @@ let g:goto_header_open_in_new_tab=1
 " vim-run
 let g:run_nostream_default=1
 
-" Gutentags
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_tagfile ='.git/tags'
-let g:gutentags_resolve_symlinks=0
+" LSP
+"vim.lsp.start({
+"    name = 'clang',
+"    cmd = {'clangd'},
+"    root_dir = vim.fs.dirname(vim.fs.find({'', ''}, {upward = true})[1]),
+"})
+
+"vim.api.nvim_create_autocmd('LspAttach', {
+"    callback = function(args)
+"        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+"    end,
+"})
+
+" YouCompleteMe
+" Let clangd fully control code completion
+"let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+"let g:ycm_clangd_binary_path = exepath("clangd")
+" Command-line flags
+"let g:ycm_clangd_args = ['-log=verbose', '-pretty']
+" Blacklisted filetypes
+"let g:ycm_filetype_blacklist = {
+"     \ 'tagbar': 1,
+"     \ 'notes': 1,
+"     \ 'markdown': 1,
+"     \ 'netrw': 1,
+"     \ 'unite': 1,
+"     \ 'text': 1,
+"     \ 'vimwiki': 1,
+"     \ 'pandoc': 1,
+"     \ 'infolog': 1,
+"     \ 'leaderf': 1,
+"     \ 'mail': 1
+"     \}
+" Disable completion for filetypes
+"let g:ycm_filetype_specific_completion_to_disable = {
+"     \ 'gitcommit': 1
+"     \}
+" Disable filepaths
+"let g:ycm_filepath_blacklist = {
+"     \ 'html': 1,
+"     \ 'jsx': 1,
+"     \ 'xml': 1,
+"     \ '.git': 1,
+"     \}
+" Cosmetics
+"let g:ycm_error_symbol = 'X'
+"let g:ycm_warning_symbol = '!'
+"let g:ycm_enable_diagnostic_highlighting = 0
+"let g:ycm_echo_current_diagnostic = 'virtual-text'
+" Enable showing documentation on hover
+"augroup MyYCMCustom
+" autocmd!
+" autocmd FileType c,cpp let b:ycm_hover = {
+"   \ 'command': 'GetDoc',
+"   \ 'syntax': &filetype
+"   \ }
+"augroup END
+" GoTo command opens a tab
+"let g:ycm_goto_buffer_command = 'tab'
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1
 " Start NERDTree and put cursor on other window
 autocmd VimEnter * NERDTree % | wincmd p
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Default position
@@ -88,4 +146,4 @@ let g:NERDTreeWinPos = "right"
 " Mouse mode
 let g:NERDTreeMouseMode=1
 " Width
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=30
