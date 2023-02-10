@@ -1,5 +1,5 @@
 " @TODO: rewrite in lua
-"        change NERDTree to smth else
+"        find NERDTree replacement
 "        add LSP
 
 " Plugins
@@ -14,7 +14,6 @@ call plug#begin()
     Plug 'Yohannfra/Vim-Goto-Header'    " Header file opener
     Plug 'cpiger/NeoDebug'              " GDB
     Plug 'ledesmablt/vim-run'           " Run shell commands
-    Plug 'preservim/nerdtree'           " File manager
 call plug#end()
 
 filetype plugin indent on
@@ -69,20 +68,3 @@ let g:goto_header_open_in_new_tab=1
 
 " vim-run
 let g:run_nostream_default=1
-
-" NERDTree
-autocmd StdinReadPre * let s:std_in=1
-" Start NERDTree and put cursor on other window
-autocmd VimEnter * NERDTree % | wincmd p
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" Default position
-let g:NERDTreeWinPos = "right"
-" Mouse mode
-let g:NERDTreeMouseMode=1
-" Width
-let g:NERDTreeWinSize=30
