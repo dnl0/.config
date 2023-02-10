@@ -4,17 +4,17 @@
 
 " Plugins
 call plug#begin()
-    Plug 'chiendo97/intellij.vim'		" Light color scheme
-    Plug 'Yggdroot/indentLine'		    " Tab line
-    Plug 'itchyny/lightline.vim'		" Status line
-    Plug 'bfrg/vim-cpp-modern'		    " C++ highlighter
+    Plug 'chiendo97/intellij.vim'       " Light color scheme
+    Plug 'Yggdroot/indentLine'          " Tab line
+    Plug 'itchyny/lightline.vim'        " Status line
+    Plug 'bfrg/vim-cpp-modern'          " C++ highlighter
     Plug 'pboettch/vim-cmake-syntax'    " CMake highlighter
     Plug 'mileszs/ack.vim'              " Search tool
-    Plug 'tpope/vim-fugitive'  		    " Git wrapper
-    Plug 'Yohannfra/Vim-Goto-Header'	" Header file opener
-    Plug 'cpiger/NeoDebug'	   	    	" GDB
-    Plug 'ledesmablt/vim-run'  	    	" Run shell commands
-    Plug 'preservim/nerdtree'  		    " File manager
+    Plug 'tpope/vim-fugitive'           " Git wrapper
+    Plug 'Yohannfra/Vim-Goto-Header'    " Header file opener
+    Plug 'cpiger/NeoDebug'              " GDB
+    Plug 'ledesmablt/vim-run'           " Run shell commands
+    Plug 'preservim/nerdtree'           " File manager
 call plug#end()
 
 filetype plugin indent on
