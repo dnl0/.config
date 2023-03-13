@@ -10,9 +10,10 @@ return require('packer').startup(function()
     use 'itchyny/lightline.vim'		-- Status line
     use 'bfrg/vim-cpp-modern'		-- C++ highlighter
     use 'pboettch/vim-cmake-syntax'	-- CMake highlighter
-    use 'mileszs/ack.vim'		-- Search tool
+    use 'mileszs/ack.vim'           -- Search tool
     use 'tpope/vim-fugitive'		-- Git wrapper
     use 'Yohannfra/Vim-Goto-Header'	-- Header file opener
-    use 'cpiger/NeoDebug'		-- GDB
+    use 'cpiger/NeoDebug'           -- GDB
     use 'ledesmablt/vim-run'		-- Run shell commands
+    use 'junegunn/goyo.vim'         -- Zen mode
 end)

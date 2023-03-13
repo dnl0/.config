@@ -10,7 +10,8 @@ vim.g.run_nostream_default = 1
 local utils = require('utils')
 
 -- colorscheme
-vim.cmd 'set background=light'
-vim.cmd 'colorscheme intellij'
+vim.cmd "set background=light"
+vim.cmd "colorscheme intellij"
+vim.cmd "let g:lightline = { 'colorscheme': 'intellij' }"
 
-require'lspconfig'.clangd.setup{}
+-- require'lspconfig'.clangd.setup{}
