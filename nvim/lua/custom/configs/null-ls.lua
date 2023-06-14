@@ -6,6 +6,8 @@ end
 
 local b = null_ls.builtins
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 local sources = {
 
   -- webdev stuff
@@ -22,4 +24,5 @@ local sources = {
 null_ls.setup {
   debug = true,
   sources = sources,
+  capabilities = capabilities,
 }

@@ -209,6 +209,20 @@ local default_plugins = {
     end,
   },
 
+  -- resize windows nicely (with animations)
+  { "anuvyklack/windows.nvim",
+     requires = {
+        "anuvyklack/middleclass",
+        "anuvyklack/animation.nvim"
+     },
+     config = function()
+        vim.o.winwidth = 10
+        vim.o.winminwidth = 10
+        vim.o.equalalways = false
+        require('windows').setup()
+     end
+  },
+
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
